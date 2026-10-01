@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy AI — Error{% endblock %}
+{% block content %}
+<div class="center-card card error-card"><span class="auth-icon error-icon"><i data-lucide="triangle-alert"></i></span><span class="section-kicker">REQUEST ERROR</span><h1>We couldn't complete that.</h1><p>{{ message }}</p><a class="button primary" href="/"><i data-lucide="arrow-left"></i> Back to FitBuddy</a></div>
+{% endblock %}

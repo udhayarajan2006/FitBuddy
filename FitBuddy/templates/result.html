@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy AI — Your Plan{% endblock %}
+{% block content %}
+<div class="page-head modern-head"><div><span class="section-kicker">YOUR PERSONAL PLAN</span><h1>Ready when you are, <span>{{ user.name }}</span>.</h1><p>Generated around your current profile and goals.</p></div><a class="button secondary" href="/"><i data-lucide="plus"></i> New plan</a></div>
+{% if message %}<div class="success"><span class="success-icon"><i data-lucide="check"></i></span><div><b>Plan updated</b><small>{{ message }}</small></div></div>{% endif %}
+<section class="profile-grid modern-profile">
+  <div><span><i data-lucide="user-round"></i> Profile</span><b>{{ user.name }}</b></div><div><span><i data-lucide="fingerprint"></i> User ID</span><b>{{ user.user_id }}</b></div><div><span><i data-lucide="calendar"></i> Age</span><b>{{ user.age }} yrs</b></div><div><span><i data-lucide="scale"></i> Weight</span><b>{{ user.weight }} kg</b></div><div><span><i data-lucide="target"></i> Goal</span><b>{{ user.goal|title }}</b></div><div><span><i data-lucide="gauge"></i> Intensity</span><b>{{ user.intensity|title }}</b></div>
+</section>
+<section class="content-grid result-grid">
+  <div class="card plan-card elevated-card"><div class="section-title"><div><span class="section-kicker">01 / WORKOUT</span><h2><i data-lucide="dumbbell"></i> 7-Day Workout Plan</h2></div><span class="ai-chip"><i data-lucide="sparkles"></i> Gemini</span></div><pre>{{ active_plan }}</pre></div>
+  <aside class="side-stack"><div class="card tip-card elevated-card"><div class="section-title"><div><span class="section-kicker">02 / RECOVERY</span><h2><i data-lucide="salad"></i> Daily fuel</h2></div><span class="ai-chip">AI</span></div><p>{{ plan.nutrition_tip }}</p></div><div class="mini-stat-card"><span class="mini-stat-icon"><i data-lucide="calendar-days"></i></span><div><b>7-day structure</b><small>Workout schedule generated for your current goal.</small></div></div></aside>
+</section>
+<section class="card feedback-card elevated-card"><div class="feedback-head"><div><span class="section-kicker">03 / REFINE</span><h2>Make it feel more like you.</h2><p>Ask for changes in plain language and Gemini will revise the workout.</p></div><span class="feedback-icon"><i data-lucide="wand-sparkles"></i></span></div><form action="/submit-feedback" method="post"><input type="hidden" name="user_id" value="{{ user.user_id }}"><div class="feedback-input"><textarea name="feedback" maxlength="1000" required placeholder="e.g. Add two cardio sessions and make Day 7 a recovery day."></textarea><button class="primary" type="submit"><span>Refine with AI</span><i data-lucide="arrow-up-right"></i></button></div></form></section>
+{% endblock %}

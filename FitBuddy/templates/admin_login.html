@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy AI — Admin{% endblock %}
+{% block content %}
+<div class="center-card card auth-card"><span class="auth-icon"><i data-lucide="shield-check"></i></span><span class="section-kicker">SECURE AREA</span><h1>Admin dashboard</h1><p>Enter the admin token configured in your <code>.env</code> file to view local users and generated plans.</p><form action="/admin-login" method="post"><label><span>Admin token</span><div class="input-wrap"><i data-lucide="key-round"></i><input type="password" name="token" required placeholder="••••••••••••" /></div></label><button class="primary" type="submit">Open dashboard <i data-lucide="arrow-up-right"></i></button></form></div>
+{% endblock %}

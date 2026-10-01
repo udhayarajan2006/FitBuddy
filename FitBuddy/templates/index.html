@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy AI — Your Personal Fitness Copilot{% endblock %}
+{% block content %}
+<section class="dashboard-hero">
+  <div class="hero-copy-wrap">
+    <div class="status-pill"><span class="status-dot"></span> AI FITNESS COPILOT <span class="pill-divider"></span><i data-lucide="zap"></i> GEMINI POWERED</div>
+    <h1>Build a routine<br>that <span>fits you.</span></h1>
+    <p class="hero-copy">A smarter way to turn your goals into a practical 7-day workout plan, recovery guidance and AI-powered refinements.</p>
+    <div class="hero-actions"><a href="#planner" class="primary hero-cta"><i data-lucide="arrow-down"></i> Build my plan</a><div class="trust-note"><i data-lucide="lock-keyhole"></i> Your demo data stays local</div></div>
+    <div class="metric-row">
+      <div><strong>7</strong><span>Days planned</span></div><div><strong>AI</strong><span>Personalized</span></div><div><strong>∞</strong><span>Refinements</span></div>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+    <div class="hero-orb"><i data-lucide="activity"></i><span>FIT<br>MODE</span></div>
+    <div class="float-card float-card-top"><span class="mini-icon"><i data-lucide="brain"></i></span><div><b>AI coaching</b><small>Adapts to your feedback</small></div></div>
+    <div class="float-card float-card-bottom"><div class="score-ring"><b>7</b><small>DAYS</small></div><div><b>Plan ready</b><small>Workout + recovery</small></div></div>
+  </div>
+</section>
+
+<section id="planner" class="planner-section">
+  <div class="section-heading"><div><span class="section-kicker">01 / YOUR PROFILE</span><h2>Set your baseline</h2></div><p>Tell us the essentials. FitBuddy handles the rest.</p></div>
+  <div class="planner-shell">
+    <aside class="planner-sidebar">
+      <div class="side-step active"><span>01</span><div><b>Profile</b><small>Your baseline</small></div></div>
+      <div class="side-line"></div>
+      <div class="side-step"><span>02</span><div><b>Goals</b><small>What you want</small></div></div>
+      <div class="side-line"></div>
+      <div class="side-step"><span>03</span><div><b>Generate</b><small>AI builds it</small></div></div>
+      <div class="sidebar-tip"><i data-lucide="sparkle"></i><p><b>Designed around you.</b><br>Use honest numbers and a realistic intensity for a more useful plan.</p></div>
+    </aside>
+    <div class="form-card" id="form-card">
+      <div class="form-head"><div><span class="form-label">PERSONAL DETAILS</span><h3>Let's get to know you</h3></div><span class="required-chip">All fields required</span></div>
+      <form action="/generate-workout" method="post" id="plan-form">
+        <div class="field-grid two">
+          <label><span>Your name</span><div class="input-wrap"><i data-lucide="user-round"></i><input name="name" required minlength="2" maxlength="100" placeholder="Abinaya" /></div></label>
+          <label><span>User ID</span><div class="input-wrap"><i data-lucide="fingerprint"></i><input name="user_id" required pattern="[A-Za-z0-9_-]+" maxlength="50" placeholder="user001" /></div></label>
+        </div>
+        <div class="field-grid two">
+          <label><span>Age</span><div class="input-wrap"><i data-lucide="calendar-days"></i><input name="age" type="number" min="18" max="100" required placeholder="21" /></div></label>
+          <label><span>Weight <small>(kg)</small></span><div class="input-wrap"><i data-lucide="scale"></i><input name="weight" type="number" min="25" max="300" step="0.1" required placeholder="60" /></div></label>
+        </div>
+        <div class="field-grid two">
+          <label><span>Primary goal</span><div class="select-wrap"><i data-lucide="target"></i><select name="goal" required><option value="">Choose your goal</option><option value="weight loss">Weight loss</option><option value="muscle gain">Muscle gain</option><option value="general wellness">General wellness</option><option value="flexibility">Flexibility</option></select><i class="chevron" data-lucide="chevron-down"></i></div></label>
+          <label><span>Workout intensity</span><div class="select-wrap"><i data-lucide="gauge"></i><select name="intensity" required><option value="">Choose intensity</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select><i class="chevron" data-lucide="chevron-down"></i></div></label>
+        </div>
+        <button class="primary generate-btn" type="submit"><span>Generate my 7-day plan</span><i data-lucide="arrow-up-right"></i></button>
+        <div class="form-foot"><span><i data-lucide="shield-check"></i> Stored locally for this demo</span><span>Never enter sensitive information</span></div>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="feature-strip">
+  <article><span class="feature-icon"><i data-lucide="calendar-check-2"></i></span><div><b>Structured week</b><p>Every day mapped with a clear routine.</p></div></article>
+  <article><span class="feature-icon"><i data-lucide="bot"></i></span><div><b>AI refinement</b><p>Change your plan through natural feedback.</p></div></article>
+  <article><span class="feature-icon"><i data-lucide="salad"></i></span><div><b>Recovery guidance</b><p>Practical nutrition and recovery tips.</p></div></article>
+</section>
+{% endblock %}
